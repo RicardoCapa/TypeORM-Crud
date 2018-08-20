@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title> Delitos</title>
+
+		<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	</head>
+	<body>
+    <nav class="navbar navbar-dark bg-dark mb-4">
+			<a href="/"  class="navbar-brand">Crud Delitos</a>
+		</nav>
+
+    <div class="col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <form action="/delito/add" method="post">
+          <div class="form-group">
+                  <label for="">Tipo Delito</label>
+                  <input type="text" name="tipo_delito" value="" class="form-control">
+                  <label for="">Descripcion</label>
+                  <input type="text" name="descripcion" value="" class="form-control">
+                  <label for="">Circuito</label>
+                  <input type="text" name="circuito" value="" class="form-control">
+                  <label for="">Canton</label>
+                  <input type="text" name="canton" value="" class="form-control">
+                  <label for="">Barrio</label>
+                  <input type="text" name="barrio" value="" class="form-control">
+                  <br>
+                  <input class="btn btn-info btn-block " name="submit" type="submit" value="Agregar Delito"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+		<br>
+      </form>
+			<form action="/delito/busqueda" method="post">
+				<div >
+								<label for="">Buscar por Tipo Delito</label>
+								<input type="text" name="tipo_delito" value="" class="form-control">
+								<input class="btn btn-info btn-block " name="submit" type="submit" value="Buscar"></button>
+			</form>
+			<br>
+    <div class="col-md-7">
+       <table class="table table-hover table-dark">
+         <thead>
+           <tr>
+             <th>ID</th>
+             <th>Tipo_Delito</th>
+             <th>Descripcion</th>
+             <th>Circuito</th>
+             <th>Canton</th>
+             <th>Barrio</th>
+             <th>Actualizar</th>
+						 <th>Borrar</th>
+           </tr>
+         </thead>
+         <tbody>
+         <% for(var i=0; i < data.length; i++) { %>
+           <tr>
+             <td><%= data[i].id %></td>
+             <td><%= data[i].tipo_delito %></td>
+             <td><%= data[i].descripcion %></td>
+             <td><%= data[i].circuito %></td>
+              <td><%= data[i].canton %></td>
+               <td><%= data[i].barrio %></td>
+             <td>
+               <a href="/mostrarDelito/<%= data[i].id %>" class="btn btn-outline-danger">Actualizar</a>
+             </td>
+             <td>
+               <a href="/delito/eliminar/<%= data[i].id %>" class="btn  btn-block btn-outline-warning">Borrar</a>
+             </td>
+           </tr>
+           <% } %>
+         </tbody>
+       </table>
+
+     </div>
+
+</body>
+</html>
