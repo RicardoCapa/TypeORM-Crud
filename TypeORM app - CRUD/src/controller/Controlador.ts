@@ -116,7 +116,7 @@ export class DelitoControlador {
 
     }
     async busquedaDelito(request: Request, response: Response, next: NextFunction) {
-      var query =request.b-ody;
+      var query =request.body;
       console.log(query);
       return this.delitoRepository.find(query);
 
